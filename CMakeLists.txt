@@ -3,4 +3,4 @@ project(SplitClause)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SplitClause main.cpp ppp.cpp)
+add_executable(SplitClause splitCliause/main.cpp splitCliause/ppp.cpp main.cpp)
