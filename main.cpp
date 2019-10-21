@@ -56,7 +56,6 @@ public:
 int main(int argc, char *argv[])
 {
 
-
     ofstream f1("/Users/liupeng/CLionProjects/SplitClause/text3.txt");//打开文件用于写，若文件不存在就创建它
     if(!f1) {
         return 0;//打开文件失败则结束运行
