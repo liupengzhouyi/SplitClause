@@ -67,8 +67,8 @@ int main(int argc, char *argv[])
 
     Node nodeList[100000];
     string s;
-
-    for (int k=250;k<=252;k++) {
+    int ttl = 0;
+    for (int k=1;k<=252;k++) {
         ifs.open("/Users/liupeng/CLionProjects/SplitClause/papers/papers/1 (" + to_string(k) + ").txt");   			//将文件流对象与文件关联起来，如果已经关联则调用失败
         assert(ifs.is_open());   	//若失败,则输出错误消息,并终止程序运行
 
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
                 string newStr = to_string((int)wString[i]) + "-" + to_string((int)wString[i+1]);
                 // string newStr = to_string((int)wString[i]) + "-" + to_string((int)wString[i+1]) + "-" + to_string((int)wString[i+2]);
 
-                cout << newStr << endl;
+                // cout << newStr << endl;
                 bool key = false;
                 for (int i=0; i<longth+1; i++){
                     if (nodeList[i].getStr() == newStr) {
@@ -105,79 +105,58 @@ int main(int argc, char *argv[])
                     nodeList[longth].setNumber(1);
                     longth ++;
                 }
+
+                ttl++;
+                if(ttl == 500) {
+                    cout << longth << "-" << k << endl;
+                    ttl = 0;
+                }
             }
         }
         ifs.close();
         //关闭文件输入流
     }
 
-
-
-    for (int i=0;i<longth;i++) {
-        string str = nodeList[i].getStr();
-        string ss = "";
-        string sss = "";
-        bool key = false;
-        for (int i=0; i<str.length(); i++) {
-            if (!key) {
-                if (str[i] == '-') {
-                    key = true;
+    ofstream f1("/Users/liupeng/CLionProjects/SplitClause/test2.txt");//打开文件用于写，若文件不存在就创建它
+    if(!f1) {
+        return 0;//打开文件失败则结束运行
+    } else {
+        for (int i=0;i<longth;i++) {
+            string str = nodeList[i].getStr();
+            string ss = "";
+            string sss = "";
+            bool key = false;
+            for (int i=0; i<str.length(); i++) {
+                if (!key) {
+                    if (str[i] == '-') {
+                        key = true;
+                    } else {
+                        ss = ss + str[i];
+                    }
                 } else {
-                    ss = ss + str[i];
+                    sss = sss + str[i];
                 }
-            } else {
-                sss = sss + str[i];
             }
+
+            stringstream stringstream1;
+            stringstream1 <<ss;
+            int ssss;
+            stringstream1 >> ssss;
+
+            stringstream stringstream2;
+            stringstream2 << sss;
+            int sssss;
+            stringstream2 >> sssss;
+
+            string char1 = ws2s(wstring(1,wchar_t(ssss)));
+            string char2 = ws2s(wstring(1,wchar_t(sssss)));
+            cout << char1 << char2 << "-" << nodeList[i].getNumber() << endl;
+            f1<< char1 << char2 << "-" << nodeList[i].getNumber() <<endl; //使用插入运算符写文件内容
         }
-
-        stringstream stringstream1;
-        stringstream1 <<ss;
-        int ssss;
-        stringstream1 >> ssss;
-
-        stringstream stringstream2;
-        stringstream2 << sss;
-        int sssss;
-        stringstream2 >> sssss;
-
-        string char1 = ws2s(wstring(1,wchar_t(ssss)));
-        string char2 = ws2s(wstring(1,wchar_t(sssss)));
-        cout << char1 << char2 << " " << nodeList[i].getNumber()<< endl;
-        // cout << ssss << "-" << sssss << "+" << nodeList[i].getStr() << "-" << nodeList[i].getNumber() << " " << char1 << char2 << " " << nodeList[i].getNumber()<< endl;
     }
-    cout << longth << endl;
+    f1.close();
 
     return 0;
 }
 */
-
-// 编码
-
-// 统计
-
-// 解码
-
-/*class MyList {
-private:
-    Node *myNode;
-    MyList *next;
-
-public:
-    Node *getMyNode() const {
-        return myNode;
-    }
-
-    void setMyNode(Node *myNode) {
-        MyList::myNode = myNode;
-    }
-
-    MyList *getNext() const {
-        return next;
-    }
-
-    void setNext(MyList *next) {
-        MyList::next = next;
-    }
-
-};*/
 

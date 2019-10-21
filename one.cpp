@@ -62,18 +62,18 @@ public:
 int main(int argc, char *argv[])
 {
     // "3", "4", "5", "6", "7", "8"
-    ifstream ifs;
+    ifstream ifs1;
     // 临时变量：记录临时字典的长度
-    int longth = 0;
+    int longth1 = 0;
 
-    Node nodeList[100000];
+    Node nodeList1[100000];
     string s;
 
     for (int k=250;k<=252;k++) {
-        ifs.open("/Users/liupeng/CLionProjects/SplitClause/papers/papers/1 (" + to_string(k) + ").txt");   			//将文件流对象与文件关联起来，如果已经关联则调用失败
-        assert(ifs.is_open());   	//若失败,则输出错误消息,并终止程序运行
+        ifs1.open("/Users/liupeng/CLionProjects/SplitClause/papers/papers/1 (" + to_string(k) + ").txt");   			//将文件流对象与文件关联起来，如果已经关联则调用失败
+        assert(ifs1.is_open());   	//若失败,则输出错误消息,并终止程序运行
 
-        while(getline(ifs,s))		//行分隔符可以显示指定，比如按照分号分隔getline(infile,s,';')
+        while(getline(ifs1,s))		//行分隔符可以显示指定，比如按照分号分隔getline(infile,s,';')
         {
             //cout << longth << endl;
             // cout<<s<<endl;
@@ -94,42 +94,43 @@ int main(int argc, char *argv[])
 
                 // cout << newStr << endl;
                 bool key = false;
-                for (int i=0; i<longth+1; i++){
-                    if (nodeList[i].getStr() == newStr) {
-                        nodeList[i].addNum();
+                for (int i=0; i<longth1+1; i++){
+                    if (nodeList1[i].getStr() == newStr) {
+                        nodeList1[i].addNum();
                         key = true;
                         break;
                     }
                 }
                 if (!key) {
-                    nodeList[longth].setStr(newStr);
-                    nodeList[longth].setNumber(1);
-                    longth ++;
+                    nodeList1[longth1].setStr(newStr);
+                    nodeList1[longth1].setNumber(1);
+                    longth1 ++;
                 }
             }
         }
-        ifs.close();
+        ifs1.close();
         //关闭文件输入流
     }
 
-
-
-    for (int i=0;i<longth;i++) {
-        string str = nodeList[i].getStr();
-
-        stringstream stringstream1;
-        stringstream1 <<str;
-        int ssss;
-        stringstream1 >> ssss;
-
-        string char1 = ws2s(wstring(1,wchar_t(ssss)));
-
-        cout << char1 << " - " << nodeList[i].getNumber()<< endl;
-        // cout << ssss << "-" << sssss << "+" << nodeList[i].getStr() << "-" << nodeList[i].getNumber() << " " << char1 << char2 << " " << nodeList[i].getNumber()<< endl;
+    ofstream f1("/Users/liupeng/CLionProjects/SplitClause/test1.txt");//打开文件用于写，若文件不存在就创建它
+    if(!f1) {
+        return 0;//打开文件失败则结束运行
+    } else {
+        for (int i=0;i<longth1;i++) {
+            string str = nodeList1[i].getStr();
+            stringstream stringstream1;
+            stringstream1 <<str;
+            int ssss;
+            stringstream1 >> ssss;
+            string char1 = ws2s(wstring(1,wchar_t(ssss)));
+            cout << char1 << "-" << nodeList1[i].getNumber() << endl;
+            // cout << ssss << "-" << sssss << "+" << nodeList[i].getStr() << "-" << nodeList[i].getNumber() << " " << char1 << char2 << " " << nodeList[i].getNumber()<< endl;
+            f1<< char1 << "-" << nodeList1[i].getNumber() <<endl; //使用插入运算符写文件内容
+        }
+        cout << longth1 << endl;
     }
-    cout << longth << endl;
+    f1.close();
 
     return 0;
 }
-
  */
