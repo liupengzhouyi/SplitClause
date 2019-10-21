@@ -1,6 +1,8 @@
 //
-// Created by 刘鹏 on 2019/10/16.
+// Created by 刘鹏 on 2019/10/21.
 //
+
+/*
 #include <fstream>
 #include <string>
 #include <codecvt>
@@ -86,9 +88,9 @@ int main(int argc, char *argv[])
                 // 获取词组
                 //wstring newStr = wstring(1,wchar_t(wString[i])) + wstring(1,wchar_t(wString[i+1]));
 
-                //string newStr = to_string((int)wString[i]);
+                string newStr = to_string((int)wString[i]);
                 //string newStr = to_string((int)wString[i]) + "-" + to_string((int)wString[i+1]);
-                string newStr = to_string((int)wString[i]) + "-" + to_string((int)wString[i+1]) + "-" + to_string((int)wString[i+2]);
+                // string newStr = to_string((int)wString[i]) + "-" + to_string((int)wString[i+1]) + "-" + to_string((int)wString[i+2]);
 
                 // cout << newStr << endl;
                 bool key = false;
@@ -114,41 +116,15 @@ int main(int argc, char *argv[])
 
     for (int i=0;i<longth;i++) {
         string str = nodeList[i].getStr();
-        string s1, ss1, sss1;
-        int key = 0;
-        for (int i=0; i<str.length(); i++) {
-            if (str[i] != '-') {
-                if (key == 0) {
-                    s1 = s1 + str[i];
-                } else if(key == 1) {
-                    ss1 = ss1 + str[i];
-                } else if(key == 2) {
-                    sss1 = sss1 + str[i];
-                }
-            } else {
-                key ++;
-            }
-        }
+
         stringstream stringstream1;
-        stringstream1 << s1;
-        int s2;
-        stringstream1 >> s2;
+        stringstream1 <<str;
+        int ssss;
+        stringstream1 >> ssss;
 
-        stringstream stringstream2;
-        stringstream2 << ss1;
+        string char1 = ws2s(wstring(1,wchar_t(ssss)));
 
-        int ss2;
-        stringstream2 >> ss2;
-
-        stringstream stringstream3;
-        stringstream3 << sss1;
-        int sss2;
-        stringstream3 >> sss2;
-
-        string char1 = ws2s(wstring(1,wchar_t(s2)));
-        string char2 = ws2s(wstring(1,wchar_t(ss2)));
-        string char3 = ws2s(wstring(1,wchar_t(sss2)));
-        cout << char1 << char2 << char3 << " - " << nodeList[i].getNumber()<< endl;
+        cout << char1 << " - " << nodeList[i].getNumber()<< endl;
         // cout << ssss << "-" << sssss << "+" << nodeList[i].getStr() << "-" << nodeList[i].getNumber() << " " << char1 << char2 << " " << nodeList[i].getNumber()<< endl;
     }
     cout << longth << endl;
@@ -156,33 +132,4 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// 编码
-
-// 统计
-
-// 解码
-
-/*class MyList {
-private:
-    Node *myNode;
-    MyList *next;
-
-public:
-    Node *getMyNode() const {
-        return myNode;
-    }
-
-    void setMyNode(Node *myNode) {
-        MyList::myNode = myNode;
-    }
-
-    MyList *getNext() const {
-        return next;
-    }
-
-    void setNext(MyList *next) {
-        MyList::next = next;
-    }
-
-};*/
-
+ */

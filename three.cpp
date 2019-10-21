@@ -1,6 +1,7 @@
 //
-// Created by 刘鹏 on 2019/10/16.
+// Created by 刘鹏 on 2019/10/21.
 //
+
 #include <fstream>
 #include <string>
 #include <codecvt>
@@ -155,34 +156,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-// 编码
-
-// 统计
-
-// 解码
-
-/*class MyList {
-private:
-    Node *myNode;
-    MyList *next;
-
-public:
-    Node *getMyNode() const {
-        return myNode;
-    }
-
-    void setMyNode(Node *myNode) {
-        MyList::myNode = myNode;
-    }
-
-    MyList *getNext() const {
-        return next;
-    }
-
-    void setNext(MyList *next) {
-        MyList::next = next;
-    }
-
-};*/
-
