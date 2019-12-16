@@ -1,5 +1,5 @@
 //
-// Created by 刘鹏 on 2019/10/16.
+//
 //
 /*
 #include <fstream>
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     Node nodeList[100000];
     string s;
     int ttl = 0;
-    for (int k=1;k<=252;k++) {
+    for (int k=250;k<=252;k++) {
         ifs.open("/Users/liupeng/CLionProjects/SplitClause/papers/papers/1 (" + to_string(k) + ").txt");   			//将文件流对象与文件关联起来，如果已经关联则调用失败
         assert(ifs.is_open());   	//若失败,则输出错误消息,并终止程序运行
 
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
         //关闭文件输入流
     }
 
-    ofstream f1("/Users/liupeng/CLionProjects/SplitClause/test2.txt");//打开文件用于写，若文件不存在就创建它
+    ofstream f1("/Users/liupeng/CLionProjects/SplitClause/paly.txt");//打开文件用于写，若文件不存在就创建它
     if(!f1) {
         return 0;//打开文件失败则结束运行
     } else {
@@ -151,6 +151,7 @@ int main(int argc, char *argv[])
             string char1 = ws2s(wstring(1,wchar_t(ssss)));
             string char2 = ws2s(wstring(1,wchar_t(sssss)));
             cout << char1 << char2 << "-" << nodeList[i].getNumber() << endl;
+            // 写入文件
             f1<< char1 << char2 << "-" << nodeList[i].getNumber() <<endl; //使用插入运算符写文件内容
         }
     }
@@ -158,5 +159,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-*/
+**/
 
