@@ -54,7 +54,7 @@ void digui(string str,int yourpinyingnumber, int nownumber, int word[][100]) {
             int num = word[nownumber-1][i];
             newStr = to_string1(newStr, wstring(1,wchar_t(num)));
             string tempStr = str + newStr;
-            cout << tempStr<< endl;
+            // cout << tempStr<< endl;
             lastword[sum] = tempStr;
             sum = sum + 1;
         }
@@ -70,8 +70,12 @@ void digui(string str,int yourpinyingnumber, int nownumber, int word[][100]) {
 
         }
     }
-
 }
+
+
+
+
+
 
 int main() {
 
@@ -94,6 +98,11 @@ int main() {
     /*for (int i=0;i<yourpingyingnumber;i++) {
         cout << yourpingyings[i] << endl;
     }*/
+
+
+
+
+
 
 
     // ---- 完成 拼音 分离
@@ -156,14 +165,15 @@ int main() {
         }
     }
 
-    /*for (int i=0;i<yourpingyingnumber;i++) {
-        for (int j = 1; j < tempwords[i][0]; j++) {
+    for (int i=0;i<yourpingyingnumber;i++) {
+        for (int j = 0; j < tempwords[i][0]; j++) {
             cout << tempwords[i][j] << " ";
         }
         cout << endl;
-    }*/
+    }
 
     string str = "";
+    // 一个空字符串，拼音数量，1，二维数组
     digui(str,yourpingyingnumber,1,tempwords);
     cout << sum << endl;
     return 0;
